@@ -1,0 +1,16 @@
+{% load gaston_tags %}
+
+<ul>
+{% for item in menu %}
+    <li {% if request.path|get_partial_path == item.url %}
+                class="active"
+            {% endif %}
+    >
+        <a
+            href="{{ item.url }}"
+        >
+            {{ item.label }}
+        </a>
+    </li>
+{% endfor %}
+</ul>
