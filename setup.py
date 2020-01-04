@@ -5,7 +5,7 @@ with open('README.md', 'r') as f:
 
 setuptools.setup(
     name='django-gaston',
-    version='0.0.2',
+    version='0.0.3',
     author='Hyde Tek',
     description='A django menu generator',
     long_description=long_description,
