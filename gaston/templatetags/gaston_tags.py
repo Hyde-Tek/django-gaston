@@ -11,10 +11,7 @@ def menu(context, menu):
     }
 
 
-@register.filter()
-def get_partial_path(path):
-    if path == '/':
-        return path
-    else:
-        split_path = path.split('/')
-        return ('/' + split_path[1] + '/')
+@register.simple_tag(takes_context=True)
+def get_all_css_classes(context, item):
+    request = context['request']
+    return item.get_all_css_classes(request)
