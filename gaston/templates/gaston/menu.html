@@ -1,13 +1,13 @@
 {% load gaston_tags %}
 
-<ul>
+<ul class="depth-{{ depth_count }}">
 {% for item in menu %}
     <li class="{% get_all_css_classes item %}">
         <a href="{{ item.url }}">
             {{ item.label }}
         </a>
         {% if item.submenu %}
-			{% menu item.submenu %}
+			{% menu item.submenu depth_count %}
         {% endif %}
     </li>
 {% endfor %}
