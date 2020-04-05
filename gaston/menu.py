@@ -6,10 +6,11 @@ if hasattr(settings, 'GASTON_ACTIVE_CLASS'):
 
 
 class MenuItem:
-    def __init__(self, label, url, css_classes=''):
+    def __init__(self, label, url, css_classes='', submenu=None):
         self.label = label
         self.url = url
         self.css_classes = css_classes
+        self.submenu = submenu
 
     def get_active_class(self, request):
         css_class = ''

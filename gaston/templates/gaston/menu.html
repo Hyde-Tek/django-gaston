@@ -6,6 +6,9 @@
         <a href="{{ item.url }}">
             {{ item.label }}
         </a>
+        {% if item.submenu %}
+			{% menu item.submenu %}
+        {% endif %}
     </li>
 {% endfor %}
 </ul>
