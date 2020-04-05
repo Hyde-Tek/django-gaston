@@ -15,6 +15,6 @@ def menu(context, menu, depth_count=None):
 
 
 @register.simple_tag(takes_context=True)
-def get_all_css_classes(context, item):
+def get_item_css_classes(context, item):
     request = context['request']
     return item.get_all_css_classes(request)

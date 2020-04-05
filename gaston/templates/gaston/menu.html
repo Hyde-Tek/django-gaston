@@ -2,7 +2,7 @@
 
 <ul class="depth-{{ depth_count }}">
 {% for item in menu %}
-    <li class="{% get_all_css_classes item %}">
+    <li class="{% get_item_css_classes item %}">
         <a href="{{ item.url }}">
             {{ item.label }}
         </a>
