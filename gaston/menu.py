@@ -1,8 +1,5 @@
-from django.conf import settings
-
 ACTIVE_CLASS = 'active'
-if hasattr(settings, 'GASTON_ACTIVE_CLASS'):
-    ACTIVE_CLASS = settings.GASTON_ACTIVE_CLASS
+SELECTED_CLASS = 'selected'
 
 
 class MenuItem:
@@ -12,13 +9,18 @@ class MenuItem:
         self.css_classes = css_classes
         self.submenu = submenu
 
-    def get_active_class(self, request):
+    def status_class(self, request):
         css_class = ''
-        if (
-            self.url == request.path or
-            (self.url != '/' and self.url in request.path)
-        ):
+
+        if self.url == request.path:
             css_class = ACTIVE_CLASS
+
+        if (
+            self.url != '/' and
+            self.url in request.path and
+            not self.url == request.path
+        ):
+            css_class = SELECTED_CLASS
         return css_class
 
     def get_css_classes(self):
@@ -26,4 +28,4 @@ class MenuItem:
 
     def get_all_css_classes(self, request):
         return '%s %s' % \
-            (self.get_css_classes(), self.get_active_class(request))
+            (self.get_css_classes(), self.status_class(request))
