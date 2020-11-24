@@ -5,12 +5,12 @@ register = template.Library()
 
 @register.inclusion_tag('gaston/menu.html', takes_context=True)
 def menu(context, menu, depth_count=None):
-	depth_count = depth_count + 1 if depth_count is not None else 0
+    depth_count = depth_count + 1 if depth_count is not None else 0
 
-	return {
-	    'menu': menu,
-	    'request': context['request'],
-	    'depth_count': depth_count,
+    return {
+        'menu': menu,
+        'request': context['request'],
+        'depth_count': depth_count,
     }
 
 
