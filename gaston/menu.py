@@ -11,7 +11,9 @@ class MenuItem:
 
     def has_active_submenu(self, request):
         if self.submenu:
-            return any(item.url == request.path for item in self.submenu)
+            for item in self.submenu:
+                if item.url == request.path or item.has_active_submenu(request):
+                    return True
         return False
 
     def status_class(self, request):
