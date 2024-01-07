@@ -9,18 +9,21 @@ class MenuItem:
         self.css_classes = css_classes
         self.submenu = submenu
 
+    def has_active_submenu(self, request):
+        if self.submenu:
+            for item in self.submenu:
+                if item.url == request.path or item.has_active_submenu(request):
+                    return True
+        return False
+
     def status_class(self, request):
         css_class = ''
 
         if self.url == request.path:
             css_class = ACTIVE_CLASS
-
-        if (
-            self.url != '/' and
-            self.url in request.path and
-            not self.url == request.path
-        ):
+        elif self.has_active_submenu(request):
             css_class = SELECTED_CLASS
+
         return css_class
 
     def get_css_classes(self):
