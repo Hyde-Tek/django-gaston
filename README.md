@@ -112,3 +112,31 @@ Finally, load `gaston_tags` inside your template and call it as follows:
 ```
 
 Where `main_menu` is the key from your context processor dictionary.
+
+## Build and Publish
+
+### Build
+
+In the root folder run:
+
+```bash
+python3 setup.py sdist bdist_wheel
+```
+
+This will create a folder named `dist` with the code ready to be published to pypi.
+
+### Publish to PYPI
+
+Install `twine` with pipx by running
+```bash
+pipx install twine
+```
+
+Run the command bellow to publish the package
+
+```bash
+twine upload dist/*
+```
+
+Username and Password will be asked. For username, use `__token__` and for password the token that
+was generated in the PYPI site.
